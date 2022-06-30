@@ -28,7 +28,7 @@ router.get('/getAll', async (_req, res) => {
 
 router.get('/get/:id', async (req, res) => {
     try {
-        const data = await User.findById(req.params.id);
+        const data = await User.findById(req.params.id).populate('cars').exec();
         res.json(data)
     }
     catch (error) {

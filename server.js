@@ -1,7 +1,7 @@
 const express = require('express');
 const UserRoutes = require('./routes/UserRoutes');
 const CarRoutes = require('./routes/CarRoutes')
-const {database} = require('./dbConnect')
+const { database } = require('./dbConnect')
 
 database.on('error', (error) => {
     console.log(error)
