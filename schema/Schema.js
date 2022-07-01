@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose
+const mongoosastic = require('mongoosastic')
+const { Client } = require('@elastic/elasticsearch')
+const esClient = new Client({ node: 'http://localhost:9200' })
+
 const CarSchema = new mongoose.Schema({
     brand: {
         required: true,
@@ -24,13 +28,26 @@ const UserSchema = new mongoose.Schema({
     cars: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Car"
+            ref: "Car",
+            es_schema: CarSchema,
+            es_indexed: true,
+            es_type: 'nested'
         }
     ]
 
 })
 
-const User =  mongoose.model('User', UserSchema)
-const Car =  mongoose.model('Car', CarSchema)
+UserSchema.plugin(mongoosastic, {
+    esClient: esClient, 
+    populate: [
+        { path: 'cars'}
+    ]
+    
+})
 
-module.exports = {User, Car}
+const User = mongoose.model('User', UserSchema)
+const Car = mongoose.model('Car', CarSchema)
+
+
+module.exports = { User, Car }
+

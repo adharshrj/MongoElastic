@@ -1,6 +1,7 @@
 const express = require('express');
 const UserRoutes = require('./routes/UserRoutes');
 const CarRoutes = require('./routes/CarRoutes')
+const ElasticSearchRoutes = require('./routes/ElasticSearchRoutes')
 const { database } = require('./dbConnect')
 
 database.on('error', (error) => {
@@ -21,6 +22,6 @@ app.listen(3000, () => {
 
 app.use('/user', UserRoutes)
 app.use('/car', CarRoutes)
-
+app.use('/elasticSearch', ElasticSearchRoutes)
 
 

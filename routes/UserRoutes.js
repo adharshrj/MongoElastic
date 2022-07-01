@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router()
 const { User } = require('../schema/Schema')
-router.post('/create', (req, res) => {
+router.post('/create',async (req, res) => {
     const data = new User({
         name: req.body.name,
         age: req.body.age,
         cars: req.body.cars
     })
     try {
-        const dataToSave = data.save();
-        res.status(200).json(dataToSave)
+        await data.save();
+        return res.status(200).send(data)
     }
     catch (error) {
-        res.status(400).json({ message: error.message })
+        return res.status(400).send({ message: error.message })
     }
 })
 
