@@ -19,7 +19,7 @@ router.post('/create',async (req, res) => {
 router.get('/getAll', async (_req, res) => {
     try {
         const data = await User.find().populate('cars').exec();
-        res.json(data)
+        res.status(200).json(data)
     }
     catch (error) {
         res.status(500).json({ message: error.message })
