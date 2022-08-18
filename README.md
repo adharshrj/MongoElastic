@@ -58,19 +58,19 @@ curl --location --request GET 'http://localhost:3000/car/getAll' \
 --data-raw ''
 ```
 
-#Get User by Id
+# Get User by Id
 ```bash
 curl --location --request GET 'http://localhost:3000/user/get/:id' \
 --data-raw ''
 ```
 
-#Get Car by Id
+# Get Car by Id
 ```bash
 curl --location --request GET 'http://localhost:3000/car/get/:id' \
 --data-raw ''
 ```
 
-#Update User by Id
+# Update User by Id
 ```bash
 curl --location --request PUT 'http://localhost:3000/user/update/:id' \
 --header 'Content-Type: application/json' \
@@ -81,7 +81,7 @@ curl --location --request PUT 'http://localhost:3000/user/update/:id' \
 }'
 ```
 
-#Update Car by Id
+# Update Car by Id
 ```bash
 curl --location --request PUT 'http://localhost:3000/car/update/:id' \
 --header 'Content-Type: application/json' \
@@ -90,25 +90,25 @@ curl --location --request PUT 'http://localhost:3000/car/update/:id' \
     "model": "M7"
 }'
 ```
-#Delete User by Id
+# Delete User by Id
 ```bash
 curl --location --request GET 'http://localhost:3000/user/delete/:id' \
 --data-raw ''
 ```
 
-#Delete Car by Id
+# Delete Car by Id
 ```bash
 curl --location --request GET 'http://localhost:3000/car/delete/:id' \
 --data-raw ''
 ```
 
-#Elastic Sync
+# Elastic Sync
 ```bash
 curl --location --request POST 'http://localhost:3000/elasticSearch/sync'\
 --data-raw ''
 ```
 
-#Elastic Search
+# Elastic Search
 ```bash
 curl --location --request GET 'http://localhost:3000/elasticSearch/:index/:type/_doc?q="yourquery"'\
 --data-raw ''
