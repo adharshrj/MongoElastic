@@ -16,5 +16,18 @@
     "mongoose": "^6.4.1",
     "nodemon": "^2.0.18",
     "tslib": "^2.4.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adharshrj/MongoElastic.git"
+  },
+  "keywords": [
+    "Mongo",
+    "Elastic"
+  ],
+  "bugs": {
+    "url": "https://github.com/adharshrj/MongoElastic/issues"
+  },
+  "homepage": "https://github.com/adharshrj/MongoElastic#readme"
 }
