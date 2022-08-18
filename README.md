@@ -1,10 +1,14 @@
 # MongoElastic
 
-#ENV
+# ENV
+```bash
     MONGOURL = "Your mongo url"
+```
 
-#Elastic
+# Elastic
+```bash
     Default = http://localhost:9200
+```
 
 ## API Endpoints
 ```bash
