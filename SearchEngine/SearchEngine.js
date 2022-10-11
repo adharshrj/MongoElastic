@@ -14,6 +14,7 @@ const phraseSearch = async (_index, _type, phrase) => {
           multi_match: {
             fields: [
               'name',
+              'type'
             ],
             query: phrase,
             type: 'phrase_prefix',

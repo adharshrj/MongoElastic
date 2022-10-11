@@ -1,5 +1,5 @@
 const { phraseSearch } = require('../SearchEngine/SearchEngine');
-const { User } = require('../schema/Schema');
+const { Pokemon } = require('../schema/Schema');
 const express = require('express');
 const router = express.Router()
 
@@ -10,7 +10,7 @@ router.get('/:index/:type', async (req, res) => {
 
 
 router.post('/sync', async (_req, res) => {
-    const stream = await User.synchronize();
+    const stream = await Pokemon.synchronize();
     let count = 0;
     
     stream.on('data', function(_err, _doc) {

@@ -1,53 +1,72 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose
 const mongoosastic = require('mongoosastic')
 const { Client } = require('@elastic/elasticsearch')
 const esClient = new Client({ node: 'http://localhost:9200' })
 
-const CarSchema = new mongoose.Schema({
-    brand: {
-        required: true,
-        type: String
-    },
-
-    model: {
-        required: true,
-        type: String
-    },
-})
-
-const UserSchema = new mongoose.Schema({
-    name: {
-        required: true,
-        type: String
-    },
-    age: {
+const PokemonSchema = new mongoose.Schema({
+    "id": {
         required: true,
         type: Number
     },
-    cars: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Car",
-            es_schema: CarSchema,
-            es_indexed: true,
-            es_type: 'nested'
+    "name": {
+        "english": {
+            required: true,
+            type: String
+        },
+        "japanese": {
+            required: true,
+            type: String
+        },
+        "chinese": {
+            required: false,
+            type: String
+        },
+        "french": {
+                required: false,
+                type: String
         }
-    ]
+    },
 
+    "type": [{
+        required: true,
+        type: String    
+    }],
+
+    "base": {
+        "HP": {
+            required: true,
+            type: Number
+        },
+        "Attack": {
+            required: true,
+            type: Number
+        },
+        "Defense": {
+            required: true,
+            type: Number
+        },
+        "Sp. Attack": {
+            required: true,
+            type: Number
+        },
+        "Sp. Defense": {
+            required: true,
+            type: Number
+        },
+        "Speed": {
+            required: true,
+            type: Number
+        }
+    }
 })
 
-UserSchema.plugin(mongoosastic, {
-    esClient: esClient, 
-    populate: [
-        { path: 'cars'}
-    ]
-    
-})
+// PokemonSchema.plugin(mongoosastic, {
+//     esClient: esClient, 
+// })
 
-const User = mongoose.model('User', UserSchema)
-const Car = mongoose.model('Car', CarSchema)
+const Pokemon = mongoose.model('Pokemon', PokemonSchema)
 
 
-module.exports = { User, Car }
+
+module.exports = { Pokemon }
 
